@@ -26,8 +26,33 @@ Import `CNTimelineCell` when you need.
 ```swift
 import CNTimelineCell
 ```
+
+Prepare your `[TimelineItem]`, for examples:
+```swift
+  let dataItem: [TimelineItem] = [TimelineItem(title: "Good morning", content: "Today is sunny day!", image: UIImage(systemName: "sun.min")),
+                                  TimelineItem(title: "08:00 am", content: "Tom wakes up", image: UIImage(systemName: "star.fill"), leftType: .start)]
+```
+
+Register TableViewCell as below:
+```swift
+    let timelineTableViewCellNib = UINib(nibName: CNTimelineCell.identifier, bundle: CNTimelineCell.bundle)
+    self.tableView.register(timelineTableViewCellNib, forCellReuseIdentifier: CNTimelineCell.identifier)
+```
+
+Render your cell:
+```swift
+  override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    let cell = tableView.dequeueReusableCell(withIdentifier: CNTimelineCell.identifier, for: indexPath) as! CNTimelineCell
+    
+    let timelineItem = dataItem[indexPath.row]
+    cell.setCellWithItem(timelineItem)
+    return cell
+  }
+```
+
 ---
 ### Configuration
+Will be provided soon
 
 ---
 ### Author
