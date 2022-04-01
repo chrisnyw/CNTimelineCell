@@ -26,10 +26,9 @@ let package = Package(
       dependencies: [],
       path: "Sources/CNTimelineCell",
       resources: [
-        .process("CNTimelineCell.xib")
+        .copy("CNTimelineCell.xib")
       ]
     )
-    
   ],
   swiftLanguageVersions: [.v5]
 )

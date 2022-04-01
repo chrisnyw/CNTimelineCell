@@ -13,7 +13,7 @@ public enum TimelineType {
 
 open class CNTimelineCell: UITableViewCell {
   public static let identifier = String(describing: CNTimelineCell.self)
-  public let cnTimelineCellURL = Bundle.module.url(forResource: "CNTimelineCell", withExtension: "xib")
+  public static let cnTimelineCellURL = Bundle.module.url(forResource: "CNTimelineCell", withExtension: "xib")!
   
   @IBOutlet weak open var timelineLeft: TimelineStraightLineView!
   @IBOutlet weak open var timelineRight: TimelineStraightLineView!
@@ -26,7 +26,7 @@ open class CNTimelineCell: UITableViewCell {
   override open func awakeFromNib() {
     super.awakeFromNib()
     // Initialization code
-    
+
     configureCell()
   }
   

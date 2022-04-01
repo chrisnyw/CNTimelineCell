@@ -37,10 +37,8 @@ class TimelineTableViewController: UITableViewController {
     
     super.viewDidLoad()
     
-    let bundle = Bundle(for: CNTimelineCell.self)
-    
-    let timelineTableViewCellNib = UINib(nibName: CNTimelineCell.identifier, bundle: Bundle(for: CNTimelineCell.self))
-    
+    let bundle = CNTimelineCell.bundleModule
+    let timelineTableViewCellNib = UINib(nibName: CNTimelineCell.identifier, bundle: Bundle(url: CNTimelineCell.cnTimelineCellURL))
     self.tableView.register(timelineTableViewCellNib, forCellReuseIdentifier: CNTimelineCell.identifier)
     
     let timelineRight = LineStyle(lineColor: .red)
