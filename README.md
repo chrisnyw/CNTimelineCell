@@ -2,6 +2,9 @@
 
 ---
 
+Sample screenshot:
+![withStyles][withStyles]
+
 ---
 ### Requirements
 - iOS 10+
@@ -61,3 +64,6 @@ Chris Ng (chrisnyw@gmail.com)
 ---
 ### License
 CNTimelineCell is available under the MIT license. See the LICENSE file for more info.
+
+
+[withStyles]: Assets/withStyles.png

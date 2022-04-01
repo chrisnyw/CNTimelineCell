@@ -6,9 +6,10 @@ import PackageDescription
 let packageName = "CNTimelineCell"
 
 let excludedFiles = [
-    "Example",
-    "README.md",
-    "LICENSE"
+  "Assets",
+  "Example",
+  "README.md",
+  "LICENSE"
 ]
 
 let package = Package(
