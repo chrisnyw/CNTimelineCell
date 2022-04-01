@@ -13,7 +13,8 @@ public enum TimelineType {
 
 open class CNTimelineCell: UITableViewCell {
   public static let identifier = String(describing: CNTimelineCell.self)
-  public static let cnTimelineCellURL = Bundle.module.url(forResource: "CNTimelineCell", withExtension: "xib")!
+  public static let cnTimelineCellURL = Bundle.module.url(forResource: "CNTimelineCell", withExtension: "xib")
+  public static let bundleModule = Bundle.module
   
   @IBOutlet weak open var timelineLeft: TimelineStraightLineView!
   @IBOutlet weak open var timelineRight: TimelineStraightLineView!
