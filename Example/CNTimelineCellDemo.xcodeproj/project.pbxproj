@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		18850DF527F6BC1800E2D37F /* CNTimelineCell in Frameworks */ = {isa = PBXBuildFile; productRef = 18850DF427F6BC1800E2D37F /* CNTimelineCell */; };
 		18AE581127F5034A0069F28C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AE581027F5034A0069F28C /* AppDelegate.swift */; };
 		18AE581327F5034A0069F28C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AE581227F5034A0069F28C /* SceneDelegate.swift */; };
 		18AE581527F5034A0069F28C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AE581427F5034A0069F28C /* ViewController.swift */; };
@@ -37,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		18850DF327F6BC0E00E2D37F /* CNTimelineCell */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = CNTimelineCell; path = ..; sourceTree = "<group>"; };
 		18AE580D27F5034A0069F28C /* CNTimelineCellDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CNTimelineCellDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18AE581027F5034A0069F28C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		18AE581227F5034A0069F28C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -58,6 +60,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18850DF527F6BC1800E2D37F /* CNTimelineCell in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -135,6 +138,7 @@
 		18CFF17327F6608B00394509 /* Packages */ = {
 			isa = PBXGroup;
 			children = (
+				18850DF327F6BC0E00E2D37F /* CNTimelineCell */,
 			);
 			name = Packages;
 			sourceTree = "<group>";
@@ -163,6 +167,7 @@
 			);
 			name = CNTimelineCellDemo;
 			packageProductDependencies = (
+				18850DF427F6BC1800E2D37F /* CNTimelineCell */,
 			);
 			productName = TimelineCollection;
 			productReference = 18AE580D27F5034A0069F28C /* CNTimelineCellDemo.app */;
@@ -236,6 +241,8 @@
 				Base,
 			);
 			mainGroup = 18AE580427F5034A0069F28C;
+			packageReferences = (
+			);
 			productRefGroup = 18AE580E27F5034A0069F28C /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -618,6 +625,13 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		18850DF427F6BC1800E2D37F /* CNTimelineCell */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = CNTimelineCell;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 18AE580527F5034A0069F28C /* Project object */;
 }

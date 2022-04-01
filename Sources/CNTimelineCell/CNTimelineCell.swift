@@ -7,14 +7,9 @@
 
 import UIKit
 
-public enum TimelineType {
-  case start, end, spot, line, none
-}
-
 open class CNTimelineCell: UITableViewCell {
   public static let identifier = String(describing: CNTimelineCell.self)
-  public static let cnTimelineCellURL = Bundle.module.url(forResource: "CNTimelineCell", withExtension: "xib")
-  public static let bundleModule = Bundle.module
+  public static let bundle = Bundle.module
   
   @IBOutlet weak open var timelineLeft: TimelineStraightLineView!
   @IBOutlet weak open var timelineRight: TimelineStraightLineView!
@@ -27,7 +22,7 @@ open class CNTimelineCell: UITableViewCell {
   override open func awakeFromNib() {
     super.awakeFromNib()
     // Initialization code
-
+    
     configureCell()
   }
   
@@ -48,14 +43,14 @@ open class CNTimelineCell: UITableViewCell {
     timelineRight.timelineType = item.rightType
     timelineRight.isHidden = item.rightType == .none
     if item.leftType == .start || item.leftType == .spot || item.leftType == .end {
-       timelineBubbleView.hasLeftArrow = true
+      timelineBubbleView.hasLeftArrow = true
       timelineBubbleView.constraintWith(identifier: "leftMargin")?.constant = 16
     } else {
       timelineBubbleView.hasLeftArrow = false
       timelineBubbleView.constraintWith(identifier: "leftMargin")?.constant = 8
     }
     if item.rightType == .start || item.rightType == .spot || item.rightType == .end {
-    timelineBubbleView.hasRightArrow = true
+      timelineBubbleView.hasRightArrow = true
       timelineBubbleView.constraintWith(identifier: "rightMargin")?.constant = 16
     } else {
       timelineBubbleView.hasRightArrow = false
@@ -82,12 +77,4 @@ open class CNTimelineCell: UITableViewCell {
     timelineBubbleView.bubbleStyle = timelineStyle.bubbleStyle
     messageSeparator.backgroundColor = timelineStyle.messageSeparator
   }
-  
-  
-}
-
-extension UIView{
-    func constraintWith(identifier: String) -> NSLayoutConstraint?{
-        return self.constraints.first(where: {$0.identifier == identifier})
-    }
 }

@@ -10,8 +10,6 @@ import UIKit
 
 @IBDesignable
 open class TimelineStraightLineView: UIView {
-
-  
   override init(frame: CGRect) {
     super.init(frame: frame)
     
@@ -75,13 +73,13 @@ open class TimelineStraightLineView: UIView {
   
   override open func draw(_ rect: CGRect) {
     guard timelineType != .none else { return }
-
+    
     let spotRadius = rect.width / 2
     
     let top = timelineType == .start ? spotOffsetY : 0.0
     let bottom = timelineType == .end ? spotOffsetY : rect.height
     let width = rect.width
-
+    
     let lineLeft = (width - lineWidth) / 2
     let lineRight = (width + lineWidth) / 2
     
