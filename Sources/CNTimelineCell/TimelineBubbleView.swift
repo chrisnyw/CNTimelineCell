@@ -10,6 +10,8 @@ import UIKit
 
 @IBDesignable
 open class TimelineBubbleView: UIView {
+  let arrowDepth = 8.0
+  let cornerRadius = 16.0
   
   override init(frame: CGRect) {
     super.init(frame: frame)
@@ -27,7 +29,8 @@ open class TimelineBubbleView: UIView {
     super.backgroundColor = .clear
   }
   
-  private var bubbleColor: UIColor? {
+  @IBInspectable
+  private var customBackgroundColor: UIColor = .clear {
     didSet {
       setNeedsDisplay()
     }
@@ -73,6 +76,7 @@ open class TimelineBubbleView: UIView {
       arrowOffsetY = bubbleStyle.arrowOffsetY
       borderWidth = bubbleStyle.borderWidth
       borderColor = bubbleStyle.borderColor
+      customBackgroundColor = bubbleStyle.backgroundColor
       setNeedsDisplay()
     }
   }
@@ -80,9 +84,6 @@ open class TimelineBubbleView: UIView {
   override open func draw(_ rect: CGRect) {
     let bezierPath = UIBezierPath()
     bezierPath.lineWidth = borderWidth
-    
-    let arrowDepth = 8.0
-    let cornerRadius = 16.0
     
     let bottom = rect.height - borderWidth
     let right = rect.width - borderWidth
@@ -96,7 +97,7 @@ open class TimelineBubbleView: UIView {
     // bottom line
     bezierPath.addLine(to: CGPoint(x: leftWithArrow + cornerRadius, y: bottom))
     // bottom-left corner
-    bezierPath.addQuadCurve(to: CGPoint(x: leftWithArrow, y: bottom - cornerRadius), controlPoint: CGPoint(x: leftWithArrow + borderWidth, y: bottom))
+    bezierPath.addQuadCurve(to: CGPoint(x: leftWithArrow, y: bottom - cornerRadius), controlPoint: CGPoint(x: leftWithArrow, y: bottom))
     // left arrow
     bezierPath.addLine(to: CGPoint(x: leftWithArrow, y: arrowOffsetY + borderWidth))
     bezierPath.addLine(to: CGPoint(x: left, y: arrowOffsetY - arrowDepth/2 + borderWidth))
@@ -104,11 +105,11 @@ open class TimelineBubbleView: UIView {
     // left line
     bezierPath.addLine(to: CGPoint(x: leftWithArrow, y: cornerRadius + borderWidth))
     // top-left corner
-    bezierPath.addQuadCurve(to: CGPoint(x: leftWithArrow + borderWidth + cornerRadius, y: top), controlPoint: CGPoint(x: leftWithArrow + borderWidth, y: top))
+    bezierPath.addQuadCurve(to: CGPoint(x: leftWithArrow + borderWidth + cornerRadius, y: top), controlPoint: CGPoint(x: leftWithArrow, y: top))
     // top line
     bezierPath.addLine(to: CGPoint(x: rightWithArrow - cornerRadius, y: top))
     // top-right corner
-    bezierPath.addQuadCurve(to: CGPoint(x: rightWithArrow, y: top + cornerRadius), controlPoint: CGPoint(x: rightWithArrow - borderWidth, y: top))
+    bezierPath.addQuadCurve(to: CGPoint(x: rightWithArrow, y: top + cornerRadius), controlPoint: CGPoint(x: rightWithArrow, y: top))
     // right arrow
     bezierPath.addLine(to: CGPoint(x: rightWithArrow, y: arrowOffsetY - arrowDepth + borderWidth))
     bezierPath.addLine(to: CGPoint(x: right, y: arrowOffsetY - arrowDepth/2 + borderWidth))
@@ -119,7 +120,7 @@ open class TimelineBubbleView: UIView {
     bezierPath.addQuadCurve(to: CGPoint(x: rightWithArrow - cornerRadius, y: bottom), controlPoint: CGPoint(x: rightWithArrow, y: bottom))
     bezierPath.close()
     
-    backgroundColor?.setFill()
+    customBackgroundColor.setFill()
     borderColor.setStroke()
     bezierPath.fill()
     bezierPath.stroke()

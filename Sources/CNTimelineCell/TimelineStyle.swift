@@ -14,6 +14,8 @@ public struct TimelineStyle {
   public var bubbleStyle: BubbleStyle = BubbleStyle()
   public var messageSeparator: UIColor = .lightGray
   
+  static let `default` = TimelineStyle()
+  
   public init(leftLineStyle: LineStyle = LineStyle(),
               rightLineStyle: LineStyle = LineStyle(),
               bubbleStyle: BubbleStyle = BubbleStyle(),
@@ -49,12 +51,15 @@ public struct BubbleStyle {
   public var arrowOffsetY: CGFloat = 30
   public var borderWidth: CGFloat = 2
   public var borderColor: UIColor = .init(red: 0/255, green: 147/255, blue: 51/255, alpha: 1)
+  public var backgroundColor: UIColor = .clear
   
   public init(arrowOffsetY: CGFloat = 30,
               borderWidth: CGFloat = 2,
-              borderColor: UIColor = .init(red: 0/255, green: 147/255, blue: 51/255, alpha: 1)) {
+              borderColor: UIColor = .init(red: 0/255, green: 147/255, blue: 51/255, alpha: 1),
+              backgroundColor: UIColor = .clear) {
     self.arrowOffsetY = arrowOffsetY
     self.borderWidth = borderWidth
     self.borderColor = borderColor
+    self.backgroundColor = backgroundColor
   }
 }

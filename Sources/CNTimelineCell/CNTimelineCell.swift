@@ -33,28 +33,30 @@ open class CNTimelineCell: UITableViewCell {
     icon.image = nil
   }
   
-  func configureCell() {
-    
+  public func setCell(item: TimelineItem, style: TimelineStyle? = nil) {
+    setCellWithItem(item)
+    setCellStyle(style ?? TimelineStyle.default)
   }
   
-  public func setCellWithItem(_ item: TimelineItem) {
+  // private funcations
+  private func configureCell() {
+    setCellStyle(TimelineStyle.default)
+  }
+  
+  private func setCellWithItem(_ item: TimelineItem) {
     timelineLeft.timelineType = item.leftType
     timelineLeft.isHidden = item.leftType == .none
     timelineRight.timelineType = item.rightType
     timelineRight.isHidden = item.rightType == .none
     if item.leftType == .start || item.leftType == .spot || item.leftType == .end {
       timelineBubbleView.hasLeftArrow = true
-      timelineBubbleView.constraintWith(identifier: "leftMargin")?.constant = 16
     } else {
       timelineBubbleView.hasLeftArrow = false
-      timelineBubbleView.constraintWith(identifier: "leftMargin")?.constant = 8
     }
     if item.rightType == .start || item.rightType == .spot || item.rightType == .end {
       timelineBubbleView.hasRightArrow = true
-      timelineBubbleView.constraintWith(identifier: "rightMargin")?.constant = 16
     } else {
       timelineBubbleView.hasRightArrow = false
-      timelineBubbleView.constraintWith(identifier: "rightMargin")?.constant = 8
     }
     
     title.text = item.title
@@ -63,7 +65,7 @@ open class CNTimelineCell: UITableViewCell {
     icon.isHidden = item.image == nil
   }
   
-  public func setCellStyle(_ timelineStyle: TimelineStyle) {
+  private func setCellStyle(_ timelineStyle: TimelineStyle) {
     if let myConstraint = timelineLeft.constraintWith(identifier: "timelineLeftWidth"){
       myConstraint.constant = timelineStyle.leftLineStyle.spotDiameter
     }
@@ -75,6 +77,27 @@ open class CNTimelineCell: UITableViewCell {
     timelineRight.lineStyle = timelineStyle.rightLineStyle
     
     timelineBubbleView.bubbleStyle = timelineStyle.bubbleStyle
+    updateBubbleContentConstraint(timelineStyle.bubbleStyle.borderWidth)
+    
     messageSeparator.backgroundColor = timelineStyle.messageSeparator
   }
+  
+  private func updateBubbleContentConstraint(_ borderWidth: CGFloat) {
+    let margin = 6.0
+    if let rightMargin = timelineBubbleView.constraintWith(identifier: "rightMargin") {
+      let right = timelineBubbleView.hasRightArrow == true ? timelineBubbleView.arrowDepth : 0
+      rightMargin.constant = margin + right + borderWidth
+    }
+    if let leftMargin = timelineBubbleView.constraintWith(identifier: "leftMargin") {
+      let left = timelineBubbleView.hasLeftArrow == true ? timelineBubbleView.arrowDepth : 0
+      leftMargin.constant = margin + left + borderWidth
+    }
+    if let topMargin = timelineBubbleView.constraintWith(identifier: "topMargin") {
+      topMargin.constant = margin + borderWidth
+    }
+    if let bottomMargin = timelineBubbleView.constraintWith(identifier: "bottomMargin") {
+      bottomMargin.constant = margin + borderWidth
+    }
+  }
+
 }
