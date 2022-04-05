@@ -1,15 +1,16 @@
 # CNTimelineCell
 
+[![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fchrisnyw%2FCNTimelineCell%2Fbadge%3Ftype%3Dswift-versions)](https://swiftpackageindex.com/chrisnyw/CNTimelineCell) [![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fchrisnyw%2FCNTimelineCell%2Fbadge%3Ftype%3Dplatforms)](https://swiftpackageindex.com/chrisnyw/CNTimelineCell) [![License: MIT](https://img.shields.io/github/license/chrisnyw/CNTimelineCell?label=License)](https://img.shields.io/github/license/chrisnyw/CNTimelineCell?label=License)
 ---
 
-CNTimelineCell is a helpful framework to generate a timeline with UITableView.
+> CNTimelineCell is a helpful framework to generate a timeline with UITableView.
 
 Sample screenshot:
 ![withStyles][withStyles]
 
 ---
 ### Requirements
-- iOS 10+
+- iOS 13+
 - Swift 5.3+
 ---
 ### Installation
@@ -21,7 +22,7 @@ Once you have your Swift package set up, adding CNTimelineCell as a dependency i
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/chrisnyw/CNTimelineCell", from: "0.1")
+    .package(url: "https://github.com/chrisnyw/CNTimelineCell", from: "0.2")
 ]
 ```
 ---
@@ -98,7 +99,7 @@ With the configuration above, you will have the result like this:
                                   TimelineItem(title: "Awesome", content: "That's all for the day", image: UIImage(systemName: "sparkles")),]
 ```
 
-######Update style and item in cellForRowAtIndexPath
+###### Update style and item in cellForRowAtIndexPath
 ```swift
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: CNTimelineCell.identifier, for: indexPath) as! CNTimelineCell
@@ -127,7 +128,7 @@ With the configuration above, you will have the result like this:
   }
 ```
 
-######Output:
+###### Output:
 ![SampleOutput][withStyles]
 
 #### Styling

@@ -15,7 +15,7 @@ let excludedFiles = [
 let package = Package(
   name: packageName,
   platforms: [
-    .iOS(.v10)
+    .iOS(.v13)
   ],
   products: [
     // Products define the executables and libraries a package produces, and make them visible to other packages.
