@@ -19,7 +19,7 @@ class TimelineTableViewController: UITableViewController {
                                   TimelineItem(title: "09:00 am - 12:00pm", content: "Many lessons\nMath\nEnglish\netc...", leftType: .line, rightType: .line),
                                   TimelineItem(title: "12:05 pm", content: "Lunch together", image: UIImage(systemName: "fork.knife"), leftType: .spot, rightType: .spot),
                                   TimelineItem(title: "01:00 pm", content: "Outdoor activities, play games in sports court.", image: UIImage(systemName: "sportscourt"), leftType: .spot, rightType: .spot),
-                                  
+
                                   TimelineItem(title: "until 03:00 pm", content: "Afternoon lesson", leftType: .line, rightType: .line),
                                   TimelineItem(title: "03:00 pm", content: "Free time", leftType: .spot, rightType: .spot),
                                   TimelineItem(title: "03:30 pm", content: "Art lesson", leftType: .line, rightType: .spot),
@@ -60,14 +60,25 @@ class TimelineTableViewController: UITableViewController {
     let cell = tableView.dequeueReusableCell(withIdentifier: CNTimelineCell.identifier, for: indexPath) as! CNTimelineCell
     
     let timelineItem = dataItem[indexPath.row]
-    cell.setCellWithItem(timelineItem)
     
+////    // sample for change border color
     if indexPath.row == dataItem.count-1 || indexPath.row == 0 {
       timelineStyle.bubbleStyle.borderColor = .orange
     } else {
       timelineStyle.bubbleStyle.borderColor = .init(red: 0/255, green: 147/255, blue: 51/255, alpha: 1)
     }
-    cell.setCellStyle(timelineStyle)
+//
+////    // sample for change backgroundColor of bubbleView
+    if indexPath.row == 3 {
+      timelineStyle.bubbleStyle.backgroundColor = .lightGray
+      timelineStyle.messageSeparator = .orange
+    } else {
+      timelineStyle.bubbleStyle.backgroundColor = .clear
+      timelineStyle.messageSeparator = .lightGray
+    }
+
+    cell.setCell(item: timelineItem, style: timelineStyle)
+    
     return cell
   }
   
