@@ -33,13 +33,13 @@ Import `CNTimelineCell` when you need.
 import CNTimelineCell
 ```
 
-Prepare your `[TimelineItem]`, for examples:
+Prepare your `[CNTimelineCellItem]`, for examples:
 ```swift
-  let dataItem: [TimelineItem] = [TimelineItem(title: "Sample", content: "Sample for LeftTimeline\nlineType = .none", leftType: .none),
-                                  TimelineItem(title: "Start", content: "lineType = .start", image: UIImage(systemName: "star.fill"), leftType: .start),
-                                  TimelineItem(title: "Spot", content: "lineType = .spot", leftType: .spot),
-                                  TimelineItem(title: "Line", content: "lineType = .line", image: UIImage(systemName: "cloud.fill"), leftType: .line),
-                                  TimelineItem(title: "End", content: "lineType = .end", image: UIImage(systemName: "moon.fill"), leftType: .end),]
+  let dataItem: [CNTimelineCellItem] = [CNTimelineCellItem(title: "Sample", content: "Sample for LeftTimeline\nlineType = .none", leftType: .none),
+                                    CNTimelineCellItem(title: "Start", content: "lineType = .start", image: UIImage(named: "star"), leftType: .start),
+                                    CNTimelineCellItem(title: "Spot", content: "lineType = .spot", leftType: .spot),
+                                    CNTimelineCellItem(title: "Line", content: "lineType = .line", image: UIImage(named: "moon"), leftType: .line),
+                                    CNTimelineCellItem(title: "End", content: "lineType = .end", image: UIImage(named: "school"), leftType: .end),]
 ```
 
 Register TableViewCell as below:
@@ -55,7 +55,7 @@ Render your cell:
     
     let timelineItem = dataItem[indexPath.row]
     cell.setCell(item: timelineItem)
-    // or set pass your custom TimelineStyle:
+    // or set pass your custom CNTimelineCellStyle:
     // cell.setCell(item: timelineItem, style: timelineStyle)
     return cell
   }
@@ -67,36 +67,36 @@ With the configuration above, you will have the result like this:
 ---
 ### Configuration
 
-#### TimelineItem
-`var title: String` message title
-`var content: String?` message content
-`var image: UIImage?` image icon
-`var leftType: TimelineType` left TimelineType (default: `.none`)
-`var rightType: TimelineType` right TimelineType (default: `.none`)
+#### CNTimelineCellItem
+- `var title: String` message title
+- `var content: String?` message content
+- `var image: UIImage?` image icon
+- `var leftType: TimelineType` left TimelineType (default: `.none`)
+- `var rightType: TimelineType` right TimelineType (default: `.none`)
 
-###### Sample TimelineItem:
+###### Sample CNTimelineCellItem:
 ```swift
-  let dataItem: [TimelineItem] = [TimelineItem(title: "Good morning", content: "Today is sunny day!", image: UIImage(systemName: "sun.min")),
-                                  TimelineItem(title: "08:00 am", content: "Tom wakes up", image: UIImage(systemName: "star.fill"), leftType: .start),
-                                  TimelineItem(title: "08:05 am", content: "Breakfast time", leftType: .spot),
-                                  TimelineItem(title: "08:30 am", content: "Mary wakes up", image: UIImage(systemName: "star.fill"), leftType: .line, rightType: .start),
-                                  TimelineItem(title: "09:00 am", content: "School time", image: UIImage(systemName: "studentdesk"), leftType: .spot, rightType: .spot),
-                                  TimelineItem(title: "09:00 am - 12:00pm", content: "Many lessons\nMath\nEnglish\netc...", leftType: .line, rightType: .line),
-                                  TimelineItem(title: "12:05 pm", content: "Lunch together", image: UIImage(systemName: "fork.knife"), leftType: .spot, rightType: .spot),
-                                  TimelineItem(title: "01:00 pm", content: "Outdoor activities, play games in sports court.", image: UIImage(systemName: "sportscourt"), leftType: .spot, rightType: .spot),
+  let dataItem: [CNTimelineCellItem] = [CNTimelineCellItem(title: "Good morning", content: "Today is sunny day!", image: UIImage(named: "light")),
+                                        CNTimelineCellItem(title: "08:00 am", content: "Tom wakes up", image: UIImage(named: "star"), leftType: .start),
+                                        CNTimelineCellItem(title: "08:05 am", content: "Breakfast time", leftType: .spot),
+                                        CNTimelineCellItem(title: "08:30 am", content: "Mary wakes up", image: UIImage(named: "star"), leftType: .line, rightType: .start),
+                                        CNTimelineCellItem(title: "09:00 am", content: "School time", image: UIImage(named: "school"), leftType: .spot, rightType: .spot),
+                                        CNTimelineCellItem(title: "09:00 am - 12:00pm", content: "Many lessons\nMath\nEnglish\netc...", leftType: .line, rightType: .line),
+                                        CNTimelineCellItem(title: "12:05 pm", content: "Lunch together", image: UIImage(named: "restaurant"), leftType: .spot, rightType: .spot),
+                                        CNTimelineCellItem(title: "01:00 pm", content: "Outdoor activities, play games in sports court.", image: UIImage(named: "sports_basketball"), leftType: .spot, rightType: .spot),
 
-                                  TimelineItem(title: "until 03:00 pm", content: "Afternoon lesson", leftType: .line, rightType: .line),
-                                  TimelineItem(title: "03:00 pm", content: "Free time", leftType: .spot, rightType: .spot),
-                                  TimelineItem(title: "03:30 pm", content: "Art lesson", leftType: .line, rightType: .spot),
-                                  TimelineItem(title: "03:15 pm", content: "Take a nap", leftType: .end, rightType: .line),
-                                  TimelineItem(title: "04:00 pm", content: "Play in playground", leftType: .none, rightType: .spot),
-                                  TimelineItem(title: "04:15 pm", content: "Wake up from nap", leftType: .start, rightType: .line),
-                                  TimelineItem(title: "05:00 pm", content: "Play TV games", leftType: .spot, rightType: .line),
-                                  TimelineItem(title: "07:00 pm", content: "Dinner", image: UIImage(systemName: "fork.knife"), leftType: .line, rightType: .spot),
-                                  TimelineItem(title: "08:00 pm", content: "Dinner", image: UIImage(systemName: "fork.knife"), leftType: .spot, rightType: .line),
-                                  TimelineItem(title: "10:00 pm", content: "Goto sleep", image: UIImage(systemName: "bed.double"), leftType: .line, rightType: .end),
-                                  TimelineItem(title: "10:30 pm", content: "Goto sleep", image: UIImage(systemName: "bed.double.fill"), leftType: .end, rightType: .none),
-                                  TimelineItem(title: "Awesome", content: "That's all for the day", image: UIImage(systemName: "sparkles")),]
+                                        CNTimelineCellItem(title: "until 03:00 pm", content: "Afternoon lesson", leftType: .line, rightType: .line),
+                                        CNTimelineCellItem(title: "03:00 pm", content: "Free time", leftType: .spot, rightType: .spot),
+                                        CNTimelineCellItem(title: "03:30 pm", content: "Art lesson", leftType: .line, rightType: .spot),
+                                        CNTimelineCellItem(title: "03:15 pm", content: "Take a nap", leftType: .end, rightType: .line),
+                                        CNTimelineCellItem(title: "04:00 pm", content: "Play in playground", leftType: .none, rightType: .spot),
+                                        CNTimelineCellItem(title: "04:15 pm", content: "Wake up from nap", leftType: .start, rightType: .line),
+                                        CNTimelineCellItem(title: "05:00 pm", content: "Play TV games", leftType: .spot, rightType: .line),
+                                        CNTimelineCellItem(title: "07:00 pm", content: "Dinner", image: UIImage(named: "restaurant"), leftType: .line, rightType: .spot),
+                                        CNTimelineCellItem(title: "08:00 pm", content: "Dinner", image: UIImage(named: "restaurant"), leftType: .spot, rightType: .line),
+                                        CNTimelineCellItem(title: "10:00 pm", content: "Goto sleep", image: UIImage(named: "bed"), leftType: .line, rightType: .end),
+                                        CNTimelineCellItem(title: "10:30 pm", content: "Goto sleep", image: UIImage(named: "single_bed"), leftType: .end, rightType: .none),
+                                        CNTimelineCellItem(title: "Awesome", content: "That's all for the day", image: UIImage(named: "auto_awesome")),]
 ```
 
 ###### Update style and item in cellForRowAtIndexPath
@@ -142,11 +142,11 @@ There are five line types in TimelineType: `start`, `end`, `spot`, `line` and `n
 ##### LineStyle
 Line style can be configured by LineStyle struct. 
 
-`var lineWidth: CGFloat` width of the central line (default: `6.0`)
-`var spotDiameter: CGFloat` diameter of circle spot (default: `20.0`)
-`var spotColor: UIColor` color of central circle spot (default `.white`)
-`var lineColor: UIColor` color of line (default `RGB(0, 144, 182)`)
-`var spotOffsetY: CGFloat` vertical offset of spot (default: `29.0`)
+- `var lineWidth: CGFloat` width of the central line (default: `6.0`)
+- `var spotDiameter: CGFloat` diameter of circle spot (default: `20.0`)
+- `var spotColor: UIColor` color of central circle spot (default `.white`)
+- `var lineColor: UIColor` color of line (default `RGB(0, 144, 182)`)
+- `var spotOffsetY: CGFloat` vertical offset of spot (default: `29.0`)
 
 | LineStyle                  | default | lineWidth = 10 | spotDiameter = 12 | spotColor = .orange | lineColor = .magenta | .spotOffsetY = 50 |
 |----------------------------|:--------:|:-------:|:-------:|:-------:|:-------:|:-------:|
@@ -154,10 +154,10 @@ Line style can be configured by LineStyle struct.
 
 ##### BubbleStyle
 Set the dialog style using BubbleStyle object
-`var arrowOffsetY: CGFloat` vertical offset of arrow (default: `30.0`)
-`var borderWidth: CGFloat` width of border (default: `2.0`)
-`var borderColor: UIColor` color of border (default: `RBC(0, 147, 51)`)
-`public var backgroundColor: UIColor` button background color (default `.clear`)
+- `var arrowOffsetY: CGFloat` vertical offset of arrow (default: `30.0`)
+- `var borderWidth: CGFloat` width of border (default: `2.0`)
+- `var borderColor: UIColor` color of border (default: `RBC(0, 147, 51)`)
+- `public var backgroundColor: UIColor` button background color (default `.clear`)
 
 | BubbleStyle                  | Output |
 |----------------------------|:--------:|
@@ -167,13 +167,13 @@ Set the dialog style using BubbleStyle object
 | backgroundColor = .systemGray6 | ![][bubbleStyleBackgroundColor] |
 | arrowOffsetY = 50.0 | ![][bubbleStyleArrowOffsetY] |
 
-##### TimelineStyle
-Pass the LineStyle and BubbleStyle to TimelineStyle object to configure CNTimelineCell
+##### CNTimelineCellStyle
+Pass the LineStyle and BubbleStyle to CNTimelineCellStyle object to configure CNTimelineCell
 
-`var leftLineStyle: LineStyle` left Timeline style (default: `LineStyle()`)
-`var rightLineStyle: LineStyle` right Timeline style (default: `LineStyle()`)
-`var bubbleStyle: BubbleStyle` bubble message style (default: `BubbleStyle()`)
-`var messageSeparator: UIColor` color of separator line in message (default: `.lightGray`)
+- `var leftLineStyle: LineStyle` left Timeline style (default: `LineStyle()`)
+- `var rightLineStyle: LineStyle` right Timeline style (default: `LineStyle()`)
+- `var bubbleStyle: BubbleStyle` bubble message style (default: `BubbleStyle()`)
+- `var messageSeparator: UIColor` color of separator line in message (default: `.lightGray`)
 
 
 ---
