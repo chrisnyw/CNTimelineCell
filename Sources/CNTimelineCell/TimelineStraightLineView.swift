@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 
+/// A timeline view drew by UIBezierPath
 @IBDesignable
 open class TimelineStraightLineView: UIView {
   override init(frame: CGRect) {
@@ -61,7 +62,7 @@ open class TimelineStraightLineView: UIView {
     }
   }
   
-  open var lineStyle: LineStyle = LineStyle() {
+  open var lineStyle: CNTimelineCellStyle.LineStyle = .init() {
     didSet {
       spotOffsetY = lineStyle.spotOffsetY
       lineColor = lineStyle.lineColor

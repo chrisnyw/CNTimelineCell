@@ -7,6 +7,7 @@
 
 import UIKit
 
+/// A UITableViewCell library for generating TimelineCell
 open class CNTimelineCell: UITableViewCell {
   public static let identifier = String(describing: CNTimelineCell.self)
   public static let bundle = Bundle.module
@@ -33,17 +34,18 @@ open class CNTimelineCell: UITableViewCell {
     icon.image = nil
   }
   
-  public func setCell(item: TimelineItem, style: TimelineStyle? = nil) {
+  /// helper function to setup the CNTimelineCell item and style
+  public func setCell(item: CNTimelineCellItem, style: CNTimelineCellStyle? = nil) {
     setCellWithItem(item)
-    setCellStyle(style ?? TimelineStyle.default)
+    setCellStyle(style ?? CNTimelineCellStyle.default)
   }
   
   // private funcations
   private func configureCell() {
-    setCellStyle(TimelineStyle.default)
+    setCellStyle(CNTimelineCellStyle.default)
   }
   
-  private func setCellWithItem(_ item: TimelineItem) {
+  private func setCellWithItem(_ item: CNTimelineCellItem) {
     timelineLeft.timelineType = item.leftType
     timelineLeft.isHidden = item.leftType == .none
     timelineRight.timelineType = item.rightType
@@ -65,7 +67,7 @@ open class CNTimelineCell: UITableViewCell {
     icon.isHidden = item.image == nil
   }
   
-  private func setCellStyle(_ timelineStyle: TimelineStyle) {
+  private func setCellStyle(_ timelineStyle: CNTimelineCellStyle) {
     if let myConstraint = timelineLeft.constraintWith(identifier: "timelineLeftWidth"){
       myConstraint.constant = timelineStyle.leftLineStyle.spotDiameter
     }

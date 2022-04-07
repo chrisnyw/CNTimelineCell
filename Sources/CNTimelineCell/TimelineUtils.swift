@@ -8,10 +8,6 @@
 import Foundation
 import UIKit
 
-public enum TimelineType {
-  case start, end, spot, line, none
-}
-
 extension UIView {
   func constraintWith(identifier: String) -> NSLayoutConstraint? {
     return self.constraints.first(where: {$0.identifier == identifier})

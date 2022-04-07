@@ -10,7 +10,7 @@ Sample screenshot:
 
 ---
 ### Requirements
-- iOS 13+
+- iOS 11+
 - Swift 5.3+
 ---
 ### Installation
@@ -22,7 +22,7 @@ Once you have your Swift package set up, adding CNTimelineCell as a dependency i
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/chrisnyw/CNTimelineCell", from: "0.2")
+    .package(url: "https://github.com/chrisnyw/CNTimelineCell", from: "0.3")
 ]
 ```
 ---

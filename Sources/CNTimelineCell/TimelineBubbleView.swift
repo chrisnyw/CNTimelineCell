@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 
+/// A bubble dialog view drew by UIBezierPath
 @IBDesignable
 open class TimelineBubbleView: UIView {
   let arrowDepth = 8.0
@@ -71,7 +72,7 @@ open class TimelineBubbleView: UIView {
     }
   }
   
-  open var bubbleStyle: BubbleStyle = BubbleStyle() {
+  open var bubbleStyle: CNTimelineCellStyle.BubbleStyle = .init() {
     didSet {
       arrowOffsetY = bubbleStyle.arrowOffsetY
       borderWidth = bubbleStyle.borderWidth
